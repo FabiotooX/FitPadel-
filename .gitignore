@@ -1,0 +1,42 @@
+# Logs y cachés
+*.log
+.DS_Store
+Thumbs.db
+.phpunit.result.cache
+.phpactor.json
+
+# Entornos y configuraciones sensibles
+.env
+.env.backup
+.env.production
+auth.json
+Homestead.yaml
+Homestead.json
+
+# Directorios del editor/IDE
+/.fleet
+/.idea
+/.nova
+/.phpunit.cache
+/.vscode
+/.zed
+/.vagrant
+
+# Dependencias
+/vendor/
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Laravel específicos
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/storage/pail
+
+# Laravel antiguos o variantes
+bootstrap/compiled.php
+app/storage/
+public_html/storage
+public_html/hot
