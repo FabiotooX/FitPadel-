@@ -61,3 +61,13 @@ Route::get('/historial', [RegistroController::class, 'index'])
  * - Si deseas proteger rutas para usuarios autenticados, se puede usar middleware:
  *   Ejemplo: ->middleware('auth') para que solo usuarios logueados puedan acceder.
  */
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
