@@ -71,3 +71,10 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+// routes/web.php
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+});
+
+
