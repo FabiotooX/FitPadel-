@@ -48,8 +48,8 @@
             <div class="space-x-4">
                 <!-- space-x-4 → espacio horizontal entre cada enlace -->
 
-                <a href="#" class="text-gray-600 hover:text-indigo-600">Características</a>
-                <a href="#" class="text-gray-600 hover:text-indigo-600">Retos</a>
+                <a href="{{ route('dashboard') }}" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition duration-300">Login</a>
+                <!-- <a href="#" class="text-gray-600 hover:text-indigo-600">Retos</a> -->
 
                 <!-- Botón para ir al formulario de registro físico -->
                 <a href="{{ route('registro.crear') }}" 
