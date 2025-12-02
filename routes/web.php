@@ -83,3 +83,14 @@ Route::middleware([
     Route::post('/admin/usuarios', [AdminUserController::class, 'guardar'])
         ->name('admin.usuarios.guardar');
 });
+
+Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
+
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+
+// routes/web.php
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+});
