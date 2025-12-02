@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Route;
 // Importamos los controladores
 use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\AdminController;
 
 /*
 

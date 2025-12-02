@@ -11,6 +11,10 @@
     <!-- Título que aparece en la pestaña del navegador -->
     <title>FitPadel+ | Padel, Fitness y Bienestar</title>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('img/logo.png') }}">
+
     <!-- 
         Cargamos los estilos de Tailwind CSS compilados con Vite.
         @vite('resources/css/app.css') genera automáticamente las rutas correctas a los archivos CSS/JS.
@@ -41,7 +45,10 @@
             -->
 
             <!-- Nombre / Logo de la app -->
-            <a href="#" class="text-2xl font-bold text-indigo-600">FitPadel+</a>
+            <a href="{{ route('home') }}" class="flex items-center text-2xl font-bold text-indigo-600">
+                <img src="{{ asset('img/logo.png') }}" alt="{{ config('app.name') }}" class="h-8 w-8 me-2">
+                <span>FitPadel+</span>
+            </a>
             <!-- text-2xl → tamaño de fuente grande, font-bold → negrita, text-indigo-600 → color azul índigo -->
 
             <!-- Enlaces del menú -->
@@ -51,7 +58,7 @@
                 @auth
                     <a href="{{ route('dashboard') }}" 
                        class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition duration-300">
-                        Dashboard
+                        {{ __('Dashboard') }}
                     </a>
                     
                     <!-- Botón de Logout -->
@@ -59,26 +66,25 @@
                         @csrf
                         <button type="submit" 
                                 class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition duration-300 font-semibold flex items-center">
-                            <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                            <i class="fas fa-sign-out-alt mr-2"></i> {{ __('Log Out') }}
                         </button>
                     </form>
                 @else
                     <a href="{{ route('login') }}" 
                        class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition duration-300">
-                        Login
+                        Iniciar Sesión
+                    </a>
+                    <a href="{{ route('register') }}" 
+                       class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition duration-300">
+                        Registrarse
                     </a>
                 @endauth
 
                 <!-- Botón para ir al formulario de registro físico -->
-                <a href="{{ route('registro.crear') }}" 
-                   class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition duration-300">
-                    Añadir registro
-                </a>
-                
-                 <a href="{{ route('admin.index') }}" 
-                   class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition duration-300">
-                    Panel Admin
-                </a>
+                    <a href="{{ route('registro.crear') }}" 
+                       class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition duration-300">
+                        {{ __('Add record') }}
+                    </a>
                 
                 <!-- 
                     bg-indigo-600 → fondo azul
@@ -110,7 +116,7 @@
                 <!-- mb-10 → margen inferior en móviles -->
                 
                 <h1 class="text-5xl font-extrabold text-gray-900 leading-tight">
-                    Eleva tu Juego con <span class="text-indigo-600">FitPadel+</span>
+                    {{ __('Elevate Your Game') }} {{ __('with') }} <span class="text-indigo-600">FitPadel+</span>
                 </h1>
                 <!-- 
                     text-5xl → muy grande
@@ -121,9 +127,9 @@
                 -->
 
                 <p class="mt-4 text-xl text-gray-600">
-                    La aplicación que combina <strong>seguimiento físico/emocional</strong>,
-                    <strong>entrenamiento de pádel</strong> y <strong>rutinas personalizadas</strong> 
-                    para un bienestar completo.
+                    {{ __('The application that combines') }} <strong>{{ __('Physical/emotional tracking') }}</strong>,
+                    <strong>{{ __('Paddle tennis training') }}</strong> {{ __('and') }} <strong>{{ __('Personalized routines') }}</strong> 
+                    {{ __('For complete well-being') }}.
                 </p>
                 <!-- mt-4 → margen superior, text-xl → texto grande, text-gray-600 → color gris -->
 
@@ -133,7 +139,7 @@
 
                     <a href="#" 
                        class="bg-indigo-600 text-white text-lg font-semibold px-8 py-3 rounded-full hover:bg-indigo-700 transition duration-300 shadow-lg">
-                        Empezar mi Transformación
+                        {{ __('Start My Transformation') }}
                     </a>
                     <!-- 
                         Botón principal: fondo azul, texto blanco, borde redondeado, efecto hover y sombra
@@ -141,7 +147,7 @@
 
                     <a href="#" 
                        class="text-indigo-600 text-lg font-semibold px-8 py-3 rounded-full border border-indigo-600 hover:bg-indigo-50 transition duration-300">
-                        Ver Características
+                        {{ __('See Features') }}
                     </a>
                     <!-- 
                         Botón secundario: fondo transparente, borde azul, hover con fondo azul claro, mismo tamaño y padding
@@ -163,7 +169,7 @@
             <!-- text-center → centra todo el contenido dentro de la sección -->
 
             <h2 class="text-3xl font-bold text-gray-800 mb-10">
-                Tu Seguimiento Completo, Dentro y Fuera de la Pista
+                {{ __('Your Complete Tracking') }}, {{ __('Inside and Outside the Court') }}
             </h2>
             <!-- mb-10 → margen inferior grande para separar del grid -->
 
@@ -174,30 +180,30 @@
                 <!-- TARJETA 1 -->
                 <div class="p-6 border rounded-lg shadow-md hover:shadow-lg transition duration-300">
                     <div class="text-4xl text-indigo-500 mb-4">🧠</div>
-                    <h3 class="text-xl font-semibold mb-2">Cuerpo y Mente</h3>
+                    <h3 class="text-xl font-semibold mb-2">{{ __('Body and Mind') }}</h3>
                     <p class="text-gray-600">
-                        Registra peso, IMC, pasos, calorías y tu estado de ánimo.
-                        Un enfoque integral para tu salud.
+                        {{ __('Track weight, BMI, steps, calories and your mood') }}.
+                        {{ __('An integral approach to your health') }}.
                     </p>
                 </div>
 
                 <!-- TARJETA 2 -->
                 <div class="p-6 border rounded-lg shadow-md hover:shadow-lg transition duration-300">
                     <div class="text-4xl text-indigo-500 mb-4">🏸</div>
-                    <h3 class="text-xl font-semibold mb-2">Entrenador y Rutinas</h3>
+                    <h3 class="text-xl font-semibold mb-2">{{ __('Coach and Routines') }}</h3>
                     <p class="text-gray-600">
-                        Rutinas deportivas generadas según tu progreso físico y los objetivos
-                        de tu entrenador de pádel.
+                        {{ __('Sports routines generated according to your physical progress') }} {{ __('and') }}
+                        {{ __('the objectives of your paddle tennis coach') }}.
                     </p>
                 </div>
 
                 <!-- TARJETA 3 -->
                 <div class="p-6 border rounded-lg shadow-md hover:shadow-lg transition duration-300">
                     <div class="text-4xl text-indigo-500 mb-4">🏆</div>
-                    <h3 class="text-xl font-semibold mb-2">Retos Semanales</h3>
+                    <h3 class="text-xl font-semibold mb-2">{{ __('Weekly Challenges') }}</h3>
                     <p class="text-gray-600">
-                        Supera retos y checkpoints para mejorar tu rendimiento deportivo
-                        y adherencia a hábitos saludables.
+                        {{ __('Overcome challenges and checkpoints to improve your sports performance') }}
+                        {{ __('And adherence to healthy habits') }}.
                     </p>
                 </div>
 
@@ -210,7 +216,7 @@
         <!-- bg-gray-800 → fondo oscuro, text-white → texto blanco, mt-12 → margen superior, py-8 → padding vertical -->
 
         <div class="container mx-auto px-6 text-center text-sm">
-            &copy; 2025 FitPadel+. Todos los derechos reservados.
+            &copy; 2025 FitPadel+. {{ __('All rights reserved') }}.
         </div>
         <!-- container → ancho máximo, mx-auto → centrado, text-center → centrado horizontal, text-sm → tamaño de letra pequeño -->
     </footer>

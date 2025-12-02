@@ -14,6 +14,10 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+        <!-- Favicon / App icon -->
+        <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}">
+        <link rel="apple-touch-icon" href="{{ asset('img/logo.png') }}">
+
         <!-- Styles -->
         @livewireStyles
     </head>

@@ -3,7 +3,10 @@
 @section('title', 'Crear Usuario - FitPadel+')
 
 @section('content_header')
-    <h1>Crear Nuevo Usuario</h1>
+    <a href="{{ route('dashboard') }}" class="btn btn-sm btn-light me-2">
+        <i class="fas fa-chevron-left"></i>
+    </a>
+    <h1 class="d-inline">Crear Nuevo Usuario</h1>
 @stop
 
 @section('content')
@@ -93,16 +96,9 @@
                         <!-- Campo: Estado -->
                         <div class="form-group">
                             <label for="status" class="col-form-label">Estado</label>
-                            <div class="custom-control custom-switch">
-                                <input type="checkbox" 
-                                       class="custom-control-input" 
-                                       id="status" 
-                                       name="status"
-                                       value="1"
-                                       {{ old('status') ? 'checked' : 'checked' }}>
-                                <label class="custom-control-label" for="status">
-                                    Activo
-                                </label>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="status" name="status" value="1" {{ old('status') ? 'checked' : 'checked' }}>
+                                <label class="form-check-label" for="status">Activo</label>
                             </div>
                         </div>
 
@@ -152,12 +148,9 @@
             padding: 1.5rem;
         }
 
-        .custom-switch {
-            padding-left: 0;
-        }
-
-        .custom-control-label {
-            margin-top: 0.25rem;
+        /* Asegurar que el switch tenga el mismo alineamiento que los inputs */
+        .form-check.form-switch {
+            padding-top: 0.35rem;
         }
     </style>
 @stop

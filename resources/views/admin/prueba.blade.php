@@ -3,7 +3,10 @@
 @section('title', 'Página de Prueba - AdminLTE')
 
 @section('content_header')
-    <h1>Página de Prueba AdminLTE</h1>
+    <a href="{{ route('dashboard') }}" class="btn btn-sm btn-light me-2">
+        <i class="fas fa-chevron-left"></i>
+    </a>
+    <h1 class="d-inline">Página de Prueba AdminLTE</h1>
 @stop
 
 @section('content')

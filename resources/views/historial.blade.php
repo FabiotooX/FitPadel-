@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <!-- Título de la página que aparece en la pestaña del navegador -->
-    <title>Historial de Registros</title>
+    <title>{{ __('View registration history') }}</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('img/logo.png') }}">
 
     <!-- 
         Cargamos los estilos CSS generados por Vite.
@@ -23,7 +27,7 @@
 
 <!-- TÍTULO PRINCIPAL -->
 <h1 class="text-3xl font-bold mb-6 text-green-600">
-    Historial de Registros Físicos
+    {{ __('Physical Registration') }} {{ __('History') }}
 </h1>
 <!-- 
     Clase Tailwind:
@@ -70,11 +74,11 @@
         <!-- ENCABEZADO -->
         <thead class="bg-blue-100">
             <tr>
-                <th class="border border-gray-300 px-4 py-2">Nombre</th>
-                <th class="border border-gray-300 px-4 py-2">Fecha</th>
-                <th class="border border-gray-300 px-4 py-2">Pasos</th>
-                <th class="border border-gray-300 px-4 py-2">Calorías</th>
-                <th class="border border-gray-300 px-4 py-2">Estado</th>
+                <th class="border border-gray-300 px-4 py-2">{{ __('Name') }}</th>
+                <th class="border border-gray-300 px-4 py-2">{{ __('Date') }}</th>
+                <th class="border border-gray-300 px-4 py-2">{{ __('Steps taken') }}</th>
+                <th class="border border-gray-300 px-4 py-2">{{ __('Calories consumed') }}</th>
+                <th class="border border-gray-300 px-4 py-2">{{ __('Physical/emotional state') }}</th>
             </tr>
         </thead>
         <!-- 
@@ -107,7 +111,7 @@
 
 @else
     <!-- MENSAJE ALTERNATIVO SI NO HAY REGISTROS -->
-    <p class="text-gray-600 mt-4">No hay registros guardados todavía.</p>
+    <p class="text-gray-600 mt-4">{{ __('No records saved yet') }}</p>
     <!-- 
         text-gray-600 → texto gris
         mt-4 → margen superior
@@ -118,11 +122,11 @@
 <div class="mt-6 flex gap-4">
     <!-- Nuevo registro -->
     <a href="{{ route('registro.crear') }}" class="text-blue-600 hover:underline">
-        Nuevo registro
+        {{ __('New record') }}
     </a>
     <!-- Volver al inicio -->
     <a href="{{ route('home') }}" class="text-gray-600 hover:underline">
-        Volver a inicio
+        {{ __('Back to home') }}
     </a>
     <!-- 
         route('nombre') → genera la URL de la ruta definida en web.php

@@ -1,6 +1,9 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <a href="{{ route('dashboard') }}" class="inline-block btn btn-sm btn-light me-2">
+            <i class="fas fa-chevron-left"></i>
+        </a>
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight d-inline">
             {{ __('Profile') }}
         </h2>
     </x-slot>

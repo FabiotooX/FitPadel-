@@ -5,6 +5,10 @@
     <meta charset="UTF-8"> <!-- Define la codificación de caracteres como UTF-8 -->
     <title>Registro Físico</title> <!-- Título que aparece en la pestaña del navegador -->
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('img/logo.png') }}">
+
     <!-- CARGA DE ESTILOS CON VITE -->
     <!--
         @vite('resources/css/app.css') carga el CSS compilado por Vite.
@@ -26,7 +30,7 @@
 
     <!-- TÍTULO PRINCIPAL -->
     <h1 class="text-3xl font-bold mb-6 text-blue-600">
-        Formulario de Registro Físico
+        {{ __('Physical Registration') }}
     </h1>
     <!--
         - text-3xl → tamaño de letra grande (3 veces el tamaño base)
@@ -42,7 +46,7 @@
             al enviar el formulario.
         -->
         <div class="bg-red-200 text-red-800 p-4 rounded mb-6 w-96">
-            <strong>Por favor corrige los errores:</strong>
+            <strong>{{ __('Please correct the errors') }}:</strong>
             <ul class="list-disc pl-6">
                 @foreach ($errors->all() as $error)
                     <!--
@@ -108,7 +112,7 @@
 
         <!-- CAMPO NOMBRE -->
         <div>
-            <label for="nombre" class="block font-semibold mb-1">Nombre:</label>
+            <label for="nombre" class="block font-semibold mb-1">{{ __('Name') }}:</label>
             <!--
                 for="nombre" → vincula la etiqueta con el input correspondiente
                 block → ocupa toda la línea
@@ -131,7 +135,7 @@
 
         <!-- CAMPO FECHA -->
         <div>
-            <label for="fecha" class="block font-semibold mb-1">Fecha:</label>
+            <label for="fecha" class="block font-semibold mb-1">{{ __('Date') }}:</label>
             <input type="date" id="fecha" name="fecha" value="{{ old('fecha') }}" 
                    class="w-full border rounded p-2" required>
             <!--
@@ -142,7 +146,7 @@
 
         <!-- CAMPO PASOS -->
         <div>
-            <label for="pasos" class="block font-semibold mb-1">Pasos realizados:</label>
+            <label for="pasos" class="block font-semibold mb-1">{{ __('Steps taken') }}:</label>
             <input type="number" id="pasos" name="pasos" value="{{ old('pasos') }}" 
                    class="w-full border rounded p-2" min="0" required>
             <!--
@@ -153,7 +157,7 @@
 
         <!-- CAMPO CALORÍAS -->
         <div>
-            <label for="calorias" class="block font-semibold mb-1">Calorías consumidas:</label>
+            <label for="calorias" class="block font-semibold mb-1">{{ __('Calories consumed') }}:</label>
             <input type="number" id="calorias" name="calorias" value="{{ old('calorias') }}" 
                    class="w-full border rounded p-2" min="0" required>
             <!--
@@ -173,7 +177,7 @@
                     - font-semibold → letra seminegrita
                     - mb-1 → margen inferior para separar del select
             -->
-            <label for="estado" class="block font-semibold mb-1">Estado físico/emocional:</label>
+            <label for="estado" class="block font-semibold mb-1">{{ __('Physical/emotional state') }}:</label>
 
             <!--
                 <select> → crea un menú desplegable para seleccionar una opción
@@ -193,7 +197,7 @@
                     value="" → valor vacío, sirve como placeholder
                     Esto fuerza al usuario a elegir un valor real
                 -->
-                <option value="">Selecciona una opción</option>
+                <option value="">{{ __('Select an option') }}</option>
 
                 <!--
                     Cada opción tiene un value que se enviará al servidor al enviar el formulario.
@@ -204,9 +208,9 @@
                     → Esto hace que cuando el formulario se recargue por un error, el usuario vea su elección anterior seleccionada
                     4) Si no coincide, no se agrega nada ('').
                 -->
-                <option value="Bien" {{ old('estado') == 'Bien' ? 'selected' : '' }}>Bien</option>
-                <option value="Normal" {{ old('estado') == 'Normal' ? 'selected' : '' }}>Normal</option>
-                <option value="Mal" {{ old('estado') == 'Mal' ? 'selected' : '' }}>Mal</option>
+                <option value="Bien" {{ old('estado') == 'Bien' ? 'selected' : '' }}>{{ __('Well') }}</option>
+                <option value="Normal" {{ old('estado') == 'Normal' ? 'selected' : '' }}>{{ __('Normal') }}</option>
+                <option value="Mal" {{ old('estado') == 'Mal' ? 'selected' : '' }}>{{ __('Bad') }}</option>
             </select>
 
             <!--
@@ -221,7 +225,7 @@
         <!-- BOTÓN DE ENVÍO -->
         <button type="submit" 
                 class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full transition duration-300">
-            Guardar registro
+            {{ __('Save record') }}
         </button>
         <!--
             bg-blue-600 → fondo azul
@@ -236,8 +240,8 @@
 
     <!-- ENLACES DE NAVEGACIÓN -->
     <div class="flex flex-col items-center mt-6 space-y-2">
-        <a href="{{ route('registro.index') }}" class="text-blue-600 hover:underline">Ver historial de registros</a>
-        <a href="{{ route('home') }}" class="text-gray-600 hover:text-indigo-600 hover:underline">Volver al inicio</a>
+        <a href="{{ route('registro.index') }}" class="text-blue-600 hover:underline">{{ __('View registration history') }}</a>
+        <a href="{{ route('home') }}" class="text-gray-600 hover:text-indigo-600 hover:underline">{{ __('Back to home') }}</a>
     </div>
     <!--
         - flex flex-col items-center → enlaces en columna centrados
