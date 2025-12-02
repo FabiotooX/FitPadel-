@@ -63,12 +63,12 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo' => '<b>FitPadel</b><span class="text-primary">+</span>',
+    'logo_img' => 'img/logo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'Admin Logo',
+    'logo_img_alt' => 'FitPadel+',
 
     /*
     |--------------------------------------------------------------------------
@@ -84,10 +84,10 @@ return [
     */
 
     'auth_logo' => [
-        'enabled' => false,
+        'enabled' => true,
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-            'alt' => 'Auth Logo',
+            'path' => 'img/logo.png',
+            'alt' => 'FitPadel+',
             'class' => '',
             'width' => 50,
             'height' => 50,
@@ -113,8 +113,8 @@ return [
         'enabled' => true,
         'mode' => 'fullscreen',
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-            'alt' => 'AdminLTE Preloader Image',
+            'path' => 'img/logo.png',
+            'alt' => 'FitPadel+',
             'effect' => 'animation__shake',
             'width' => 60,
             'height' => 60,
@@ -314,6 +314,27 @@ return [
         [
             'type' => 'sidebar-menu-search',
             'text' => 'search',
+        ],
+        [
+            'text' => 'Prueba AdminLTE',
+            'url' => 'admin/prueba',
+            'icon' => 'fas fa-fw fa-flask',
+        ],
+        [
+            'text' => 'Gestión de Usuarios',
+            'icon' => 'fas fa-fw fa-users',
+            'submenu' => [
+                [
+                    'text' => 'Crear Usuario',
+                    'url' => 'admin/usuarios/crear',
+                    'icon' => 'fas fa-fw fa-user-plus',
+                ],
+                [
+                    'text' => 'Listar Usuarios',
+                    'url' => 'admin/usuarios',
+                    'icon' => 'fas fa-fw fa-list',
+                ],
+            ],
         ],
         [
             'text' => 'blog',
@@ -547,6 +568,4 @@ return [
     */
 
     'livewire' => false,
-
-    
 ];

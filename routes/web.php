@@ -3,12 +3,9 @@
 // Importamos la clase Route para definir rutas web
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
-
-// Importamos el controlador RegistroController para manejar la lógica de registro
+// Importamos los controladores
 use App\Http\Controllers\RegistroController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminUserController;
 
 /*
 
@@ -74,6 +71,17 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    // Ruta de prueba para AdminLTE
+    Route::get('/admin/prueba', function () {
+        return view('admin.prueba');
+    })->name('admin.prueba');
+
+    // Rutas para gestión de usuarios
+    Route::get('/admin/usuarios/crear', [AdminUserController::class, 'crear'])
+        ->name('admin.usuarios.crear');
+    Route::post('/admin/usuarios', [AdminUserController::class, 'guardar'])
+        ->name('admin.usuarios.guardar');
 });
 
 Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register');

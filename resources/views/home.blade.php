@@ -45,16 +45,33 @@
             <!-- text-2xl → tamaño de fuente grande, font-bold → negrita, text-indigo-600 → color azul índigo -->
 
             <!-- Enlaces del menú -->
-            <div class="space-x-4">
+            <div class="space-x-4 flex items-center">
                 <!-- space-x-4 → espacio horizontal entre cada enlace -->
-
-                <a href="{{ route('login') }}" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition duration-300">Login</a>
-                <a href="{{ route('register') }}" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition duration-300">Register</a>
-                <!-- <a href="#" class="text-gray-600 hover:text-indigo-600">Retos</a> -->
+                <!-- Botón para ir al login o dashboard -->
+                @auth
+                    <a href="{{ route('dashboard') }}" 
+                       class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition duration-300">
+                        Dashboard
+                    </a>
+                    
+                    <!-- Botón de Logout -->
+                    <form method="POST" action="{{ route('logout') }}" class="inline">
+                        @csrf
+                        <button type="submit" 
+                                class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition duration-300 font-semibold flex items-center">
+                            <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                        </button>
+                    </form>
+                @else
+                    <a href="{{ route('login') }}" 
+                       class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition duration-300">
+                        Login
+                    </a>
+                @endauth
 
                 <!-- Botón para ir al formulario de registro físico -->
                 <a href="{{ route('registro.crear') }}" 
-                   class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition duration-300">
+                   class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition duration-300">
                     Añadir registro
                 </a>
                 
