@@ -120,10 +120,12 @@
 
 <!-- ENLACES DE NAVEGACIÓN -->
 <div class="mt-6 flex gap-4">
-    <!-- Nuevo registro -->
-    <a href="{{ route('registro.crear') }}" class="text-blue-600 hover:underline">
-        {{ __('New record') }}
-    </a>
+    <!-- Nuevo registro (solo visible si estás autenticado) -->
+    @auth
+        <a href="{{ route('registro.crear') }}" class="text-blue-600 hover:underline">
+            {{ __('New record') }}
+        </a>
+    @endauth
     <!-- Volver al inicio -->
     <a href="{{ route('home') }}" class="text-gray-600 hover:underline">
         {{ __('Back to home') }}

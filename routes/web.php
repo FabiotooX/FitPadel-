@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 
 /*
 
@@ -32,29 +33,9 @@ Route::get('/', function () {
 
 
 // RUTA PARA MOSTRAR EL FORMULARIO DE REGISTRO
-
 // Ruta GET que muestra el formulario de registro físico
-Route::get('/registro', [RegistroController::class, 'crear'])
-    ->name('registro.crear'); 
-// 'registro.crear' es el nombre de la ruta, útil para generar enlaces desde Blade con route('registro.crear')
-
-
-// RUTA PARA GUARDAR LOS DATOS DEL FORMULARIO
-
-// Ruta POST que recibe los datos enviados desde el formulario
-Route::post('/registro', [RegistroController::class, 'guardar'])
-    ->name('registro.guardar');
-// 'registro.guardar' se usa en el atributo action del formulario HTML
-// Esta ruta se encarga de validar, guardar en la base de datos y generar CSV
-
-
-// RUTA PARA MOSTRAR EL HISTORIAL DE REGISTROS
-
 // Ruta GET que muestra la lista de registros guardados
-Route::get('/historial', [RegistroController::class, 'index'])
-    ->name('registro.index');
-// 'registro.index' permite crear enlaces desde Blade como route('registro.index')
-
+// Ruta POST que recibe los datos enviados desde el formulario
 
 // NOTAS IMPORTANTES
 
@@ -71,6 +52,14 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
+    // Rutas protegidas de registro (requieren autenticación)
+    Route::get('/registro', [RegistroController::class, 'crear'])
+        ->name('registro.crear');
+    Route::post('/registro', [RegistroController::class, 'guardar'])
+        ->name('registro.guardar');
+    Route::get('/historial', [RegistroController::class, 'index'])
+        ->name('registro.index');
+
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
@@ -85,6 +74,21 @@ Route::middleware([
         ->name('admin.usuarios.crear');
     Route::post('/admin/usuarios', [AdminUserController::class, 'guardar'])
         ->name('admin.usuarios.guardar');
+
+    // Rutas CRUD para usuarios (protegidas con autenticación)
+    // Comentadas en espera de usar Route::resource
+    /*
+    Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users.index');
+    Route::get('/admin/users/create', [UserController::class, 'create'])->name('admin.users.create');
+    Route::post('/admin/users', [UserController::class, 'store'])->name('admin.users.store');
+    Route::get('/admin/users/{user}', [UserController::class, 'show'])->name('admin.users.show');
+    Route::get('/admin/users/{user}/edit', [UserController::class, 'edit'])->name('admin.users.edit');
+    Route::put('/admin/users/{user}', [UserController::class, 'update'])->name('admin.users.update');
+    Route::delete('/admin/users/{user}', [UserController::class, 'destroy'])->name('admin.users.destroy');
+    */
+
+    // Ruta resource para usuarios
+    Route::resource('admin/users', UserController::class, ['as' => 'admin']);
 });
 
 Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register');

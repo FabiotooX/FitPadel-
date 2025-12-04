@@ -326,12 +326,12 @@ return [
             'submenu' => [
                 [
                     'text' => 'Crear Usuario',
-                    'url' => 'admin/usuarios/crear',
+                    'url' => 'admin/users/create',
                     'icon' => 'fas fa-fw fa-user-plus',
                 ],
                 [
                     'text' => 'Listar Usuarios',
-                    'url' => 'admin/usuarios',
+                    'url' => 'admin/users',
                     'icon' => 'fas fa-fw fa-list',
                 ],
             ],

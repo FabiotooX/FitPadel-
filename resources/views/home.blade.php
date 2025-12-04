@@ -58,7 +58,7 @@
                 @auth
                     <a href="{{ route('dashboard') }}" 
                        class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition duration-300">
-                        {{ __('Dashboard') }}
+                        Panel de control
                     </a>
                     
                     <!-- Botón de Logout -->
@@ -66,7 +66,7 @@
                         @csrf
                         <button type="submit" 
                                 class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition duration-300 font-semibold flex items-center">
-                            <i class="fas fa-sign-out-alt mr-2"></i> {{ __('Log Out') }}
+                            <i class="fas fa-sign-out-alt mr-2"></i> Cerrar sesión
                         </button>
                     </form>
                 @else
@@ -79,12 +79,6 @@
                         Registrarse
                     </a>
                 @endauth
-
-                <!-- Botón para ir al formulario de registro físico -->
-                    <a href="{{ route('registro.crear') }}" 
-                       class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition duration-300">
-                        {{ __('Add record') }}
-                    </a>
                 
                 <!-- 
                     bg-indigo-600 → fondo azul
@@ -116,7 +110,7 @@
                 <!-- mb-10 → margen inferior en móviles -->
                 
                 <h1 class="text-5xl font-extrabold text-gray-900 leading-tight">
-                    {{ __('Elevate Your Game') }} {{ __('with') }} <span class="text-indigo-600">FitPadel+</span>
+                    Eleva tu juego con <span class="text-indigo-600">FitPadel+</span>
                 </h1>
                 <!-- 
                     text-5xl → muy grande
@@ -127,9 +121,8 @@
                 -->
 
                 <p class="mt-4 text-xl text-gray-600">
-                    {{ __('The application that combines') }} <strong>{{ __('Physical/emotional tracking') }}</strong>,
-                    <strong>{{ __('Paddle tennis training') }}</strong> {{ __('and') }} <strong>{{ __('Personalized routines') }}</strong> 
-                    {{ __('For complete well-being') }}.
+                    La aplicación que combina <strong> seguimiento físico/emocional, entrenamiento de pádel y rutinas personalizadas, </strong>
+                    para un bienestar completo.
                 </p>
                 <!-- mt-4 → margen superior, text-xl → texto grande, text-gray-600 → color gris -->
 
@@ -137,21 +130,33 @@
                 <div class="mt-8 space-x-4">
                     <!-- mt-8 → separación del párrafo, space-x-4 → espacio entre botones -->
 
-                    <a href="#" 
-                       class="bg-indigo-600 text-white text-lg font-semibold px-8 py-3 rounded-full hover:bg-indigo-700 transition duration-300 shadow-lg">
-                        {{ __('Start My Transformation') }}
-                    </a>
-                    <!-- 
-                        Botón principal: fondo azul, texto blanco, borde redondeado, efecto hover y sombra
-                    -->
+                    @auth
+                        <a href="{{ route('registro.crear') }}" 
+                           class="bg-indigo-600 text-white text-lg font-semibold px-8 py-3 rounded-full hover:bg-indigo-700 transition duration-300 shadow-lg">
+                            Añadir registro
+                        </a>
+                        <!-- 
+                            Botón principal: fondo azul, texto blanco, borde redondeado, efecto hover y sombra
+                        -->
 
-                    <a href="#" 
-                       class="text-indigo-600 text-lg font-semibold px-8 py-3 rounded-full border border-indigo-600 hover:bg-indigo-50 transition duration-300">
-                        {{ __('See Features') }}
-                    </a>
-                    <!-- 
-                        Botón secundario: fondo transparente, borde azul, hover con fondo azul claro, mismo tamaño y padding
-                    -->
+                        <a href="{{ route('registro.index') }}" 
+                           class="text-indigo-600 text-lg font-semibold px-8 py-3 rounded-full border border-indigo-600 hover:bg-indigo-50 transition duration-300">
+                            Ver historial de registros
+                        </a>
+                        <!-- 
+                            Botón secundario: fondo transparente, borde azul, hover con fondo azul claro, mismo tamaño y padding
+                        -->
+                    @else
+                        <a href="#" 
+                           class="bg-indigo-600 text-white text-lg font-semibold px-8 py-3 rounded-full hover:bg-indigo-700 transition duration-300 shadow-lg">
+                            Empezar mi transformación
+                        </a>
+
+                        <a href="#" 
+                           class="text-indigo-600 text-lg font-semibold px-8 py-3 rounded-full border border-indigo-600 hover:bg-indigo-50 transition duration-300">
+                            Ver características
+                        </a>
+                    @endauth
                 </div>
             </div>
 
@@ -169,7 +174,7 @@
             <!-- text-center → centra todo el contenido dentro de la sección -->
 
             <h2 class="text-3xl font-bold text-gray-800 mb-10">
-                {{ __('Your Complete Tracking') }}, {{ __('Inside and Outside the Court') }}
+                Tu seguimiento completo, dentro y fuera de la pista
             </h2>
             <!-- mb-10 → margen inferior grande para separar del grid -->
 
@@ -180,30 +185,28 @@
                 <!-- TARJETA 1 -->
                 <div class="p-6 border rounded-lg shadow-md hover:shadow-lg transition duration-300">
                     <div class="text-4xl text-indigo-500 mb-4">🧠</div>
-                    <h3 class="text-xl font-semibold mb-2">{{ __('Body and Mind') }}</h3>
+                    <h3 class="text-xl font-semibold mb-2">Cuerpo y Mente</h3>
                     <p class="text-gray-600">
-                        {{ __('Track weight, BMI, steps, calories and your mood') }}.
-                        {{ __('An integral approach to your health') }}.
+                        Registra peso, IMC, pasos, calorías y tu estado.
+                        Un enfoque integral para tu salud.
                     </p>
                 </div>
 
                 <!-- TARJETA 2 -->
                 <div class="p-6 border rounded-lg shadow-md hover:shadow-lg transition duration-300">
                     <div class="text-4xl text-indigo-500 mb-4">🏸</div>
-                    <h3 class="text-xl font-semibold mb-2">{{ __('Coach and Routines') }}</h3>
+                    <h3 class="text-xl font-semibold mb-2">Entrenador y Rutinas</h3>
                     <p class="text-gray-600">
-                        {{ __('Sports routines generated according to your physical progress') }} {{ __('and') }}
-                        {{ __('the objectives of your paddle tennis coach') }}.
+                        Rutinas deportivas generadas según tu progreso físico y los objetivos de tu entrenador de pádel.
                     </p>
                 </div>
 
                 <!-- TARJETA 3 -->
                 <div class="p-6 border rounded-lg shadow-md hover:shadow-lg transition duration-300">
                     <div class="text-4xl text-indigo-500 mb-4">🏆</div>
-                    <h3 class="text-xl font-semibold mb-2">{{ __('Weekly Challenges') }}</h3>
+                    <h3 class="text-xl font-semibold mb-2">Retos Semanales</h3>
                     <p class="text-gray-600">
-                        {{ __('Overcome challenges and checkpoints to improve your sports performance') }}
-                        {{ __('And adherence to healthy habits') }}.
+                        Supera retos y checkpoints para mejorar tu rendimiento deportivo y adherencia a hábitos saludables.
                     </p>
                 </div>
 
@@ -216,7 +219,7 @@
         <!-- bg-gray-800 → fondo oscuro, text-white → texto blanco, mt-12 → margen superior, py-8 → padding vertical -->
 
         <div class="container mx-auto px-6 text-center text-sm">
-            &copy; 2025 FitPadel+. {{ __('All rights reserved') }}.
+            &copy; 2025 FitPadel+. Todos los derechos reservados.
         </div>
         <!-- container → ancho máximo, mx-auto → centrado, text-center → centrado horizontal, text-sm → tamaño de letra pequeño -->
     </footer>
