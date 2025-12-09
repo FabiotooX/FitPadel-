@@ -1,7 +1,18 @@
 <x-app-layout>
     <x-slot name="header">
-        <a href="{{ route('dashboard') }}" class="inline-block btn btn-sm btn-light me-2">
-            <i class="fas fa-chevron-left"></i>
+        {{--
+            Botón de retorno a dashboard
+            - href="{{ route('dashboard') }}: Genera la URL dinámicamente desde las rutas de Laravel
+            ¿Por qué? Si cambias la ruta en web.php, este enlace se actualiza solo.
+            - class="btn btn-danger": Clases de Bootstrap para botón rojo
+            ¿Por qué Bootstrap y no Tailwind? AdminLTE usa Bootstrap, así no hay conflictos.
+            - float-right: Empuja el botón a la derecha
+            - {{ __('Back to dashboard') }}: Traduce el texto automáticamente según el idioma
+            ¿Por qué? Si la app está en inglés o español, se adapta solo.
+        --}}
+        <a href="{{ route('dashboard') }}" 
+            class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 float-right">
+            {{ __('Back to dashboard') }}
         </a>
         <h2 class="font-semibold text-xl text-gray-800 leading-tight d-inline">
             {{ __('Profile') }}

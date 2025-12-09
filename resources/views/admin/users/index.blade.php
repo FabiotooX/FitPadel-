@@ -58,16 +58,16 @@
                                         <td>{{ $user->created_at->format('d/m/Y H:i') }}</td>
                                         <td>
                                             <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-info btn-xs me-1" title="Ver">
-                                                <i class="fas fa-eye"></i>
+                                              👁️‍🗨️   
                                             </a>
                                             <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-warning btn-xs me-1" title="Editar">
-                                                <i class="fas fa-edit"></i>
+                                                ✏️
                                             </a>
                                             <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('¿Estás seguro?');">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-xs" title="Eliminar">
-                                                    <i class="fas fa-trash"></i>
+                                                    ❌ 
                                                 </button>
                                             </form>
                                         </td>

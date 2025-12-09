@@ -10,17 +10,8 @@
                 <!-- Volver a inicio (primero, estilo unificado) -->
                 <a href="{{ route('home') }}" 
                     class="inline-flex items-center px-4 py-2 bg-green-600 text-white text-sm font-semibold rounded-lg hover:bg-green-700 transition duration-300">
-                    <svg class="me-2" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
                     {{ __('Back to home') }}
                 </a>
-
-                <!-- Cerrar sesión (después) -->
-                <form method="POST" action="{{ route('logout') }}" class="inline">
-                    @csrf
-                    <button type="submit" class="inline-flex items-center px-4 py-2 bg-red-600 text-white text-sm font-semibold rounded-lg hover:bg-red-700 transition duration-300">
-                        <i class="fas fa-sign-out-alt me-2"></i> {{ __('Log Out') }}
-                    </button>
-                </form>
             </div>
         </div>
     </x-slot>
