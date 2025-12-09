@@ -5,16 +5,13 @@ use Illuminate\Support\Facades\Route;
 
 // Importamos los controladores
 use App\Http\Controllers\RegistroController;
-use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 
 /*
-
 | Rutas Web
-
 | Aquí definimos todas las rutas accesibles desde el navegador.
 | Cada ruta puede apuntar a:
 |   - Una función anónima (closure)
@@ -69,25 +66,18 @@ Route::middleware([
         return view('admin.prueba');
     })->name('admin.prueba');
 
-    // Rutas para gestión de usuarios
-    Route::get('/admin/usuarios/crear', [AdminUserController::class, 'crear'])
-        ->name('admin.usuarios.crear');
-    Route::post('/admin/usuarios', [AdminUserController::class, 'guardar'])
-        ->name('admin.usuarios.guardar');
-
-    // Rutas CRUD para usuarios (protegidas con autenticación)
-    // Comentadas en espera de usar Route::resource
-    /*
-    Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users.index');
-    Route::get('/admin/users/create', [UserController::class, 'create'])->name('admin.users.create');
-    Route::post('/admin/users', [UserController::class, 'store'])->name('admin.users.store');
-    Route::get('/admin/users/{user}', [UserController::class, 'show'])->name('admin.users.show');
-    Route::get('/admin/users/{user}/edit', [UserController::class, 'edit'])->name('admin.users.edit');
-    Route::put('/admin/users/{user}', [UserController::class, 'update'])->name('admin.users.update');
-    Route::delete('/admin/users/{user}', [UserController::class, 'destroy'])->name('admin.users.destroy');
-    */
-
-    // Ruta resource para usuarios
+    /**
+     * CRUD de Usuarios
+     *
+     * Usamos `Route::resource('admin/users', UserController::class, ['as' => 'admin'])`
+     * que genera las siete rutas estándar (index, create, store, show,
+     * edit, update, destroy). Las rutas generadas tendrán nombres como:
+     * `admin.users.index`, `admin.users.create`, `admin.users.store`, etc.
+     *
+     * Estas rutas están dentro del grupo protegido por los middleware definidos
+     * arriba (auth:sanctum, Jetstream session, verified). Por tanto el CRUD
+     * sólo es accesible por usuarios autenticados y verificados.
+     */
     Route::resource('admin/users', UserController::class, ['as' => 'admin']);
 });
 

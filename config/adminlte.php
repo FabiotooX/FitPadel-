@@ -316,75 +316,75 @@ return [
             'text' => 'search',
         ],
         [
-            'text' => 'Prueba AdminLTE',
+            'text' => 'menu.test_adminlte',
             'url' => 'admin/prueba',
             'icon' => 'fas fa-fw fa-flask',
         ],
         [
-            'text' => 'Gestión de Usuarios',
+            'text' => 'menu.user_management',
             'icon' => 'fas fa-fw fa-users',
             'submenu' => [
                 [
-                    'text' => 'Crear Usuario',
+                    'text' => 'menu.create_user',
                     'url' => 'admin/users/create',
                     'icon' => 'fas fa-fw fa-user-plus',
                 ],
                 [
-                    'text' => 'Listar Usuarios',
+                    'text' => 'menu.list_users',
                     'url' => 'admin/users',
                     'icon' => 'fas fa-fw fa-list',
                 ],
             ],
         ],
         [
-            'text' => 'blog',
+            'text' => 'menu.blog',
             'url' => 'admin/blog',
             'can' => 'manage-blog',
         ],
         [
-            'text' => 'pages',
+            'text' => 'menu.pages',
             'url' => 'admin/pages',
             'icon' => 'far fa-fw fa-file',
             'label' => 4,
             'label_color' => 'success',
         ],
-        ['header' => 'account_settings'],
+        ['header' => 'menu.account_settings'],
         [
-            'text' => 'profile',
+            'text' => 'menu.profile',
             'url' => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'change_password',
+            'text' => 'menu.change_password',
             'url' => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
-            'text' => 'multilevel',
+            'text' => 'menu.multilevel',
             'icon' => 'fas fa-fw fa-share',
             'submenu' => [
                 [
-                    'text' => 'level_one',
+                    'text' => 'menu.level_one',
                     'url' => '#',
                 ],
                 [
-                    'text' => 'level_one',
+                    'text' => 'menu.level_one',
                     'url' => '#',
                     'submenu' => [
                         [
-                            'text' => 'level_two',
+                            'text' => 'menu.level_two',
                             'url' => '#',
                         ],
                         [
-                            'text' => 'level_two',
+                            'text' => 'menu.level_two',
                             'url' => '#',
                             'submenu' => [
                                 [
-                                    'text' => 'level_three',
+                                    'text' => 'menu.level_three',
                                     'url' => '#',
                                 ],
                                 [
-                                    'text' => 'level_three',
+                                    'text' => 'menu.level_three',
                                     'url' => '#',
                                 ],
                             ],
@@ -392,24 +392,24 @@ return [
                     ],
                 ],
                 [
-                    'text' => 'level_one',
+                    'text' => 'menu.level_one',
                     'url' => '#',
                 ],
             ],
         ],
-        ['header' => 'labels'],
+        ['header' => 'menu.labels'],
         [
-            'text' => 'important',
+            'text' => 'menu.important',
             'icon_color' => 'red',
             'url' => '#',
         ],
         [
-            'text' => 'warning',
+            'text' => 'menu.warning',
             'icon_color' => 'yellow',
             'url' => '#',
         ],
         [
-            'text' => 'information',
+            'text' => 'menu.information',
             'icon_color' => 'cyan',
             'url' => '#',
         ],
