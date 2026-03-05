@@ -21,15 +21,36 @@ class UpdateRegistroRequest extends FormRequest
      */
     public function rules(): array
     {
-        // En una actualización, usamos 'sometimes' para permitir 
-        // enviar solo los campos que queremos cambiar (PATCH/PUT parcial).
-        // Si el campo existe en la petición, se aplican las reglas (required, string, sin...).
         return [
-            'nombre' => ['sometimes', 'required', 'string', 'max:255'],
+            'nombre' => ['sometimes', 'required', 'string', 'max:50'],
             'fecha' => ['sometimes', 'required', 'date'],
             'pasos' => ['sometimes', 'required', 'integer', 'min:0'],
             'calorias' => ['sometimes', 'required', 'integer', 'min:0'],
-            'estado' => ['sometimes', 'required', 'string', 'in:activo,inactivo,pendiente'],
+            'estado' => ['sometimes', 'required', 'string', 'in:Bien,Normal,Mal'],
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'required' => 'El campo :attribute es obligatorio.',
+            'string' => 'El campo :attribute debe ser un texto.',
+            'integer' => 'El campo :attribute debe ser un numero entero.',
+            'date' => 'El campo :attribute debe ser una fecha valida.',
+            'max' => 'El campo :attribute no puede tener mas de :max caracteres.',
+            'min' => 'El campo :attribute debe ser al menos :min.',
+            'in' => 'El campo :attribute debe ser uno de estos valores: Bien, Normal o Mal.',
+        ];
+    }
+
+    public function attributes(): array
+    {
+        return [
+            'nombre' => 'nombre',
+            'fecha' => 'fecha',
+            'pasos' => 'pasos',
+            'calorias' => 'calorias',
+            'estado' => 'estado',
         ];
     }
 }

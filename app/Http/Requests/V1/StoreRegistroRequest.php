@@ -21,17 +21,36 @@ class StoreRegistroRequest extends FormRequest
      */
     public function rules(): array
     {
-        // Reglas de validación
-        // required: campo obligatorio
-        // string/integer/date: asegura el tipo de dato
-        // max/min: límites de longitud o valor
-        // in: solo permite valores específicos (lista cerrada)
         return [
-            'nombre' => ['required', 'string', 'max:255'],
+            'nombre' => ['required', 'string', 'max:50'],
             'fecha' => ['required', 'date'],
             'pasos' => ['required', 'integer', 'min:0'],
             'calorias' => ['required', 'integer', 'min:0'],
-            'estado' => ['required', 'string', 'in:activo,inactivo,pendiente'], 
+            'estado' => ['required', 'string', 'in:Bien,Normal,Mal'],
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'required' => 'El campo :attribute es obligatorio.',
+            'string' => 'El campo :attribute debe ser un texto.',
+            'integer' => 'El campo :attribute debe ser un numero entero.',
+            'date' => 'El campo :attribute debe ser una fecha valida.',
+            'max' => 'El campo :attribute no puede tener mas de :max caracteres.',
+            'min' => 'El campo :attribute debe ser al menos :min.',
+            'in' => 'El campo :attribute debe ser uno de estos valores: Bien, Normal o Mal.',
+        ];
+    }
+
+    public function attributes(): array
+    {
+        return [
+            'nombre' => 'nombre',
+            'fecha' => 'fecha',
+            'pasos' => 'pasos',
+            'calorias' => 'calorias',
+            'estado' => 'estado',
         ];
     }
 }

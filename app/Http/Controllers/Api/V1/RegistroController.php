@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Models\Registro;
-use Illuminate\Http\Request;
 use App\Http\Requests\V1\StoreRegistroRequest;
 use App\Http\Requests\V1\UpdateRegistroRequest;
 use App\Http\Resources\V1\RegistroResource;
@@ -29,11 +28,11 @@ class RegistroController extends Controller
      */
     public function store(StoreRegistroRequest $request)
     {
-        // El método ->validated() devuelve solo los campos aprobados por las reglas
         $registro = Registro::create($request->validated());
-        
-        // Devolvemos el recurso creado (código 201 por defecto al crear)
-        return new RegistroResource($registro);
+
+        return (new RegistroResource($registro))
+            ->response()
+            ->setStatusCode(201);
     }
 
     /**
@@ -65,6 +64,6 @@ class RegistroController extends Controller
     public function destroy(Registro $registro)
     {
         $registro->delete();
-        return response()->json(null, 204);
+        return response()->noContent();
     }
 }
