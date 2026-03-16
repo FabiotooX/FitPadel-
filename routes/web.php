@@ -91,3 +91,7 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 });
+
+// Cliente básico para probar la API con token (AE5.3).
+// Se deja público porque el login lo hace contra /api/v1/login.
+Route::view('/api-client', 'api-client')->name('api.client');
